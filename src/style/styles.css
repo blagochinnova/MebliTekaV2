@@ -73,7 +73,7 @@ h4 {
   text-decoration: none;
 }
 .logo {
-  height: 60px;
+  height: 50px;
   width: auto;
   margin-right: 5px;
   display: block;
@@ -355,13 +355,13 @@ ul {
   justify-content: center;
   align-items: center;
   transform: scale(0.9);
-  
+
   /* Не ховати через display */
-  display: flex; 
-  
+  display: flex;
+
   opacity: 0;
   pointer-events: none;
-  
+
   transition: opacity 0.3s ease, transform 0.3s ease;
   animation-fill-mode: both;
 }
