@@ -12,21 +12,22 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Router>
-      <div className="app">
-        <Header openModal={() => setIsModalOpen(true)} />
-        <main>
-          <Routes>
-            <Route path="/Home" element={<Home />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Catalog" element={<Catalog />} />
-            <Route path="/Services" element={<Services />} />
-          </Routes>
-        </main>
-        <Footer />
-        <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      </div>
-    </Router>
+    <>
+      <Header openModal={() => setIsModalOpen(true)} />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Catalog" element={<Catalog />} />
+        <Route path="/Services" element={<Services />} />
+      </Routes>
+
+      <Footer />
+      <ConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 }
 

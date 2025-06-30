@@ -1,3 +1,11 @@
+.mission-section {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.mission-content {
+  min-width: 250px;
+}
 .mission-section h2 {
   font-size: 40px;
   font-weight: bold;
@@ -7,6 +15,9 @@
 .mission-section p {
   font-size: 20px;
   font-weight: 400;
+}
+.mission-section img {
+  width: 400px;
 }
 
 .team-section h2 {

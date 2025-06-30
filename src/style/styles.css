@@ -1,33 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* === Основні кольори === */
-:root {
-  --main-bg: radial-gradient(circle at center, #0b1e11, #000000 90%);
-  --text-main: #d8d8d8;
-  --text-light: #dcdcdc;
-  --accent-green: #145426;
-  --box-bg: rgba(255, 255, 255, 0.02);
-  --icon-color: #d8d8d8;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--main-bg);
-  color: var(--text-main);
-}
-/* === Заголовки === */
-h1,
-h2,
-h3,
-h4 {
-  color: var(--text-light);
-  margin-bottom: 0.5rem;
+@mixin transition(
+  $property: all,
+  $duration: 0.45s,
+  $ease: cubic-bezier(0.65, 0, 0.076, 1)
+) {
+  transition: $property $duration $ease;
 }
 
 /* === Кнопка === */
@@ -37,7 +13,7 @@ h4 {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 999px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -45,50 +21,52 @@ h4 {
   background-color: #19752c;
 }
 
-/* === Контейнер === */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
 /*=== Header === */
+
 .site-header {
   display: flex;
-  text-align: center;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  /* background-color: black; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   width: 100%;
 }
-
+.site-header button {
+  font-size: 1rem;
+}
 .logo-container {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
-.logo-link {
+.logo-container a {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
+
 .logo {
-  height: 60px;
+  height: 50px;
   width: auto;
-  margin-right: 5px;
-  display: block;
+  /* display: block; */
 }
 
 .site-title {
   font-size: 24px;
   font-weight: bold;
   color: #d8d8d8;
+  vertical-align: middle;
 }
-
+.site-header nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
 .nav-link {
   display: flex;
   font-size: 24px;
-  gap: 40px;
+  gap: 60px;
   list-style: none;
 }
 
@@ -123,7 +101,7 @@ section {
 }
 
 .hero-content h1 {
-  font-size: 56px;
+  font-size: 60px;
   text-transform: uppercase;
   margin-bottom: 20px;
   color: var(--text-main);
@@ -234,16 +212,86 @@ section {
   line-height: 1.4;
 }
 
-.learn-more {
-  font-weight: 600;
-  color: var(--text-main); /* або інший колір посилання */
+.btn-link {
+  position: relative;
+  display: inline-block;
   cursor: pointer;
-  user-select: none;
-  transition: color 0.3s ease;
-}
-
-.learn-more:hover {
-  color: var(--text-light); /* Темніший при ховері */
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  &.learn-more {
+    height: auto;
+    .circle {
+      @include transition(all, 0.55s, cubic-bezier(0.65, 0, 0.076, 1));
+      position: relative;
+      display: block;
+      margin: 0;
+      width: 3rem;
+      height: 3rem;
+      background: var(--accent-green);
+      border-radius: 1.625rem;
+      .icon {
+        @include transition(all, 0.55s, cubic-bezier(0.65, 0, 0.076, 1));
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: #d8d8d8;
+        &.arrow {
+          @include transition(all, 0.55s, cubic-bezier(0.65, 0, 0.076, 1));
+          left: 0.625rem;
+          width: 1.125rem;
+          height: 0.125rem;
+          background: none;
+          &::before {
+            position: absolute;
+            content: "";
+            top: -0.25rem;
+            right: 0.0625rem;
+            width: 0.625rem;
+            height: 0.625rem;
+            border-top: 0.125rem solid #d8d8d8;
+            border-right: 0.125rem solid #d8d8d8;
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+    .btn-text {
+      @include transition(all, 0.55s, cubic-bezier(0.65, 0, 0.076, 1));
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 0;
+      margin: 0 0 0 1.85rem;
+      color: #d8d8d8;
+      font-weight: 500;
+      line-height: 1.4;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  &:hover {
+    .circle {
+      width: 100%;
+      .icon {
+        &.arrow {
+          background: #d8d8d8;
+          transform: translate(1rem, 0);
+        }
+      }
+    }
+    .btn-text {
+      color: #d8d8d8;
+    }
+  }
 }
 
 /* === Блок переваг і послуг === */
@@ -355,13 +403,13 @@ ul {
   justify-content: center;
   align-items: center;
   transform: scale(0.9);
-  
+
   /* Не ховати через display */
-  display: flex; 
-  
+  display: flex;
+
   opacity: 0;
   pointer-events: none;
-  
+
   transition: opacity 0.3s ease, transform 0.3s ease;
   animation-fill-mode: both;
 }
@@ -488,7 +536,7 @@ ul {
   animation-name: fadeInModal;
 }
 
-/* Зникнення (опціонально, якщо використовуєш JS для плавного закриття) */
+/* Зникнення  */
 .modal.hide {
   opacity: 0;
   pointer-events: none;

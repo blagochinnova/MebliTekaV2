@@ -4,7 +4,8 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../style/catalog.css"
+import "../style/catalog.css";
+import "../style/main.css";
 
 const catalogData = [
   {
@@ -16,8 +17,8 @@ const catalogData = [
       { src: "/kitchen4.jpg", label: "Кухня" },
       { src: "/kitchen5.jpg" },
       { src: "/kitchen6.jpg" },
-      { src: "/kitchen7.jpg" }
-    ]
+      { src: "/kitchen7.jpg" },
+    ],
   },
   {
     title: "Спальня",
@@ -27,8 +28,8 @@ const catalogData = [
       { src: "/bedroom3.jpg", label: "Спальня" },
       { src: "/bedroom4.jpg", label: "Спальня" },
       { src: "/bedroom5.jpg" },
-      { src: "/bedroom6.jpg" }
-    ]
+      { src: "/bedroom6.jpg" },
+    ],
   },
   {
     title: "Вітальня",
@@ -38,8 +39,8 @@ const catalogData = [
       { src: "/living3.jpg" },
       { src: "/living4.jpg" },
       { src: "/living5.jpg" },
-      { src: "/living6.jpg" }
-    ]
+      { src: "/living6.jpg" },
+    ],
   },
   {
     title: "Передпокій",
@@ -49,9 +50,9 @@ const catalogData = [
       { src: "/corridor3.jpg" },
       { src: "/corridor4.jpg" },
       { src: "/corridor5.jpg" },
-      { src: "/corridor6.jpg" }
-    ]
-  }
+      { src: "/corridor6.jpg" },
+    ],
+  },
 ];
 
 export default function Catalog() {
@@ -59,7 +60,10 @@ export default function Catalog() {
     <main>
       <div className="container kitchen-page">
         {catalogData.map((category, index) => (
-          <section key={index} className={`${category.title.toLowerCase()}-section`}>
+          <section
+            key={index}
+            className={`${category.title.toLowerCase()}-section`}
+          >
             <h2>{category.title}</h2>
             <Swiper
               modules={[Navigation, Pagination]}
@@ -68,17 +72,15 @@ export default function Catalog() {
               spaceBetween={30}
               slidesPerView={1}
               loop={true}
-              
             >
               {category.images.map((img, idx) => (
                 <SwiperSlide key={idx}>
-                <img
-                  src={`/images/${img.src}`}
-                  alt={img.label || `Фото ${category.title} ${idx + 1}`}
-                />
-                {img.label && <p>{img.label}</p>}
-              </SwiperSlide>
-              
+                  <img
+                    src={`/images/${img.src}`}
+                    alt={img.label || `Фото ${category.title} ${idx + 1}`}
+                  />
+                  {img.label && <p>{img.label}</p>}
+                </SwiperSlide>
               ))}
             </Swiper>
           </section>
