@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ResumeModal from "../components/ResumeModal";
-import "../style/about.css";
-import "../style/main.css";
+import "../style/styles.css";
 
 export default function About() {
   const [isConsultationOpen, setConsultationOpen] = useState(false);

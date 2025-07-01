@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "../style/services.css";
-import "../style/main.css";
+import "../style/styles.css";
 
 export default function Services() {
   return (

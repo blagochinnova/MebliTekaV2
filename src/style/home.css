@@ -1,0 +1,266 @@
+@mixin transition(
+  $property: all,
+  $duration: 0.45s,
+  $ease: cubic-bezier(0.65, 0, 0.076, 1)
+) {
+  transition: $property $duration $ease;
+}
+
+/* === Кнопка === */
+.button {
+  background-color: var(--accent-green);
+  color: #d8d8d8;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: #19752c;
+}
+
+
+
+/* === Секції === */
+section {
+  margin-bottom: 4rem;
+}
+/*=== HERO ===*/
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  color: var(--text-main);
+  gap: 40px;
+  flex-wrap: wrap; /* адаптивність */
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 250px;
+}
+
+.hero-content h1 {
+  font-size: 60px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: var(--text-main);
+  text-align: left;
+}
+
+.image-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 400px;
+  min-width: 280px;
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* НАШІ ПЕРЕВАГИ === */
+.advantages-section > h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.advantages-list {
+  display: flex;
+  gap: 40px; /* відстань між блоками */
+  flex-wrap: nowrap; /* щоб ряд не переносився */
+}
+
+.advantage-item {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.advantage-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.advantage-item img {
+  width: 64px; /* збільшена іконка */
+  height: 64px;
+  margin-bottom: 15px;
+}
+
+.advantage-item h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+
+.advantage-item p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/*=== НАШІ ПОСЛУГИ ===*/
+.services-section {
+  padding: 20px;
+}
+
+.services-section > h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.services-list {
+  display: flex;
+  gap: 40px; /* Відстань між блоками */
+  flex-wrap: nowrap; /* Щоб блоки не переносились */
+}
+
+.service-item {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-item img {
+  width: 64px; /* Збільшена іконка */
+  height: 64px;
+  margin-bottom: 15px;
+}
+
+.service-item h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+
+.service-item p {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.btn-link {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  &.learn-more {
+    height: auto;
+    .circle {
+      @include transition(all, 0.55s, cubic-bezier(0.65, 0, 0.076, 1));
+      position: relative;
+      display: block;
+      margin: 0;
+      width: 3rem;
+      height: 3rem;
+      background: var(--accent-green);
+      border-radius: 1.625rem;
+      .icon {
+        @include transition(all, 0.55s, cubic-bezier(0.65, 0, 0.076, 1));
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: #d8d8d8;
+        &.arrow {
+          @include transition(all, 0.55s, cubic-bezier(0.65, 0, 0.076, 1));
+          left: 0.625rem;
+          width: 1.125rem;
+          height: 0.125rem;
+          background: none;
+          &::before {
+            position: absolute;
+            content: "";
+            top: -0.25rem;
+            right: 0.0625rem;
+            width: 0.625rem;
+            height: 0.625rem;
+            border-top: 0.125rem solid #d8d8d8;
+            border-right: 0.125rem solid #d8d8d8;
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+    .btn-text {
+      @include transition(all, 0.55s, cubic-bezier(0.65, 0, 0.076, 1));
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 0;
+      margin: 0 0 0 1.85rem;
+      color: #d8d8d8;
+      font-weight: 500;
+      line-height: 1.4;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  &:hover {
+    .circle {
+      width: 100%;
+      .icon {
+        &.arrow {
+          background: #d8d8d8;
+          transform: translate(1rem, 0);
+        }
+      }
+    }
+    .btn-text {
+      color: #d8d8d8;
+    }
+  }
+}
+
+/* === Блок переваг і послуг === */
+.features,
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.feature-box,
+.service-box {
+  background: var(--box-bg);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  flex: 1 1 200px;
+  min-width: 220px;
+  text-align: center;
+}
+
+.feature-box i,
+.service-box i {
+  font-size: 2rem;
+  color: var(--icon-color);
+  margin-bottom: 1rem;
+}
+
+

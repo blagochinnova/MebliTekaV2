@@ -9,7 +9,6 @@ import wrenchIcon from "../assets/icons/wrench.svg";
 import gearSixIcon from "../assets/icons/gear-six.svg";
 
 import "../style/styles.css";
-import "../style/main.css";
 export default function HomePage() {
   return (
     <main>

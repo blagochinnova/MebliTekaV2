@@ -1,0 +1,57 @@
+/* === Контактний блок === */
+.footer {
+    color: var(--text-light); /* Світлий текст */
+    padding: 30px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    margin-top: 3rem;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .footer-content p {
+    margin: 0;
+  }
+  
+  .footer-content p strong {
+    color: var(--text-main);
+  }
+  
+  .footer-content a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-content a:hover,
+  .footer-content a:focus {
+    color: var(--accent-green);
+    outline: none;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .social-links a img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1); /* Білі іконки, якщо svg чорні */
+    transition: filter 0.3s ease;
+  }
+  
+  .social-links a:hover img,
+  .social-links a:focus img {
+    filter: brightness(0) invert(0.7) sepia(1) saturate(5) hue-rotate(200deg);
+  }
+  
+  
