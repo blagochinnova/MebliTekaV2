@@ -1,35 +1,35 @@
 .kitchen-page {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 40px;
   padding: 20px;
 }
-.kitchen-page section {
-  background-color: #0c3013; /* або інший фон */
+.catalog-section {
+  background-color: #0c3013;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-.kitchen-page h2 {
-  font-size: 40px;
+
+.catalog-section h2 {
+  font-size: 32px;
   font-weight: bold;
-  margin-bottom: 30px;
-  text-align: left;
+  margin-bottom: 20px;
 }
 
 .swiper {
-  max-width: 350px;
-  margin: 0 auto;
+  max-width: 100%;
   position: relative;
 }
-.swiper-slide {
-  width: 500px;   /* фіксована ширина слайда */
-  height: 350px;  /* фіксована висота слайда */
+
+.slide-wrapper {
   position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 10px;
 }
-.swiper-slide img {
+
+.slide-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -37,49 +37,106 @@
   border-radius: 10px;
 }
 
-.swiper-slide p {
+.slide-wrapper p {
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
   margin: 0;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.5); /* напівпрозорий фон */
-  color: var(--text-main);
-  font-size: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #d8d8d8;
   text-align: center;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  font-size: 16px;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-  top: 50%;
-  transform: translateY(-50%);
-  color: #000;
-}
-
-.swiper-button-prev {
-  left: 0;
-}
-
-.swiper-button-next {
-  right: 0;
-}
+/* === КРАПКИ === */
 .swiper-pagination {
-  position: static; /* прибираємо абсолютне позиціювання */
   margin-top: 12px;
   text-align: center;
+  position: static !important; /* видаляє абсолютне позиціювання */
 }
 .swiper-pagination-bullet {
-  background: #000 !important; /* чорний колір */
-  width: 12px;
-  height: 12px;
+  background: #000 !important;
+  width: 10px;
+  height: 10px;
   opacity: 0.5;
-  margin: 0 6px !important;
+  margin: 0 4px !important;
 }
-
 .swiper-pagination-bullet-active {
   opacity: 1;
   transform: scale(1.2);
+}
+
+/* === СТРІЛКИ === */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #000 !important;
+  top: 50%;
+  transform:translateY(-50%);
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+.swiper-button-next {
+  right: 10px;
+}
+
+/* === Адаптивність === */
+
+/* Для мобільних (до 640px) */
+@media (max-width: 639px) {
+  .kitchen-page {
+    gap: 20px;
+  }
+
+  .swiper {
+    max-width: 100%;
+  }
+
+  .swiper-slide {
+    width: 100%;
+    height: auto;
+  }
+
+  .swiper-slide img {
+    height: auto;
+  }
+
+  .kitchen-page h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+/* Для планшетів (640px - 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .kitchen-page {
+    gap: 30px;
+  }
+
+  .swiper {
+   
+  }
+
+  .swiper-slide {
+    height: 300px;
+  }
+
+  .kitchen-page h2 {
+    font-size: 32px;
+    text-align: left;
+  }
+}
+
+/* Для ПК (від 1024px і більше) */
+@media (min-width: 1024px) {
+  .kitchen-page {
+  
+    gap: 40px;
+  }
+
+  .swiper-slide {
+    height: 350px;
+  }
 }

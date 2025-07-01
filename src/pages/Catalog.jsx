@@ -59,26 +59,26 @@ export default function Catalog() {
     <main>
       <div className="container kitchen-page">
         {catalogData.map((category, index) => (
-          <section
-            key={index}
-            className={`${category.title.toLowerCase()}-section`}
-          >
+          <section key={index} className="catalog-section">
             <h2>{category.title}</h2>
             <Swiper
               modules={[Navigation, Pagination]}
               navigation
               pagination={{ clickable: true }}
-              spaceBetween={30}
+              spaceBetween={20}
               slidesPerView={1}
-              loop={true}
+              loop
             >
               {category.images.map((img, idx) => (
                 <SwiperSlide key={idx}>
-                  <img
-                    src={`/images/${img.src}`}
-                    alt={img.label || `Фото ${category.title} ${idx + 1}`}
-                  />
-                  {img.label && <p>{img.label}</p>}
+                  <div className="slide-wrapper">
+                    <img
+                      src={`/images/${img.src}`}
+                      alt={img.label || `Фото ${category.title}`}
+                    />
+                    {img.label && <p>{img.label}</p>}
+                    <div className="swiper-pagination" />
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
