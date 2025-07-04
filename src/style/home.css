@@ -6,27 +6,6 @@
   transition: $property $duration $ease;
 }
 
-/* === Кнопка === */
-.button {
-  background-color: var(--accent-green);
-  color: #d8d8d8;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 999px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.button:hover {
-  background-color: #19752c;
-}
-
-
-
-/* === Секції === */
-section {
-  margin-bottom: 4rem;
-}
 /*=== HERO ===*/
 .hero-section {
   display: flex;
@@ -262,5 +241,3 @@ section {
   color: var(--icon-color);
   margin-bottom: 1rem;
 }
-
-

@@ -86,11 +86,11 @@ export default function HomePage() {
                 Індивідуальний підхід до створення стильних та функціональних
                 меблів, які ідеально впишуться у ваш інтер’єр.
               </p>
-              <a class="btn-link learn-more">
-                <span class="circle" aria-hidden="true">
-                  <span class="icon arrow"></span>
+              <a className="btn-link learn-more">
+                <span className="circle" aria-hidden="true">
+                  <span className="icon arrow"></span>
                 </span>
-                <span class="btn-text">Дізнатися більше </span>
+                <span className="btn-text">Дізнатися більше </span>
               </a>
             </div>
             <div className="service-item">
@@ -100,11 +100,11 @@ export default function HomePage() {
                 Професійне виготовлення меблів на замовлення з урахуванням ваших
                 побажань і сучасних стандартів якості.
               </p>
-              <a class="btn-link learn-more">
-                <span class="circle" aria-hidden="true">
-                  <span class="icon arrow"></span>
+              <a className="btn-link learn-more">
+                <span className="circle" aria-hidden="true">
+                  <span className="icon arrow"></span>
                 </span>
-                <span class="btn-text">Дізнатися більше </span>
+                <span className="btn-text">Дізнатися більше </span>
               </a>
             </div>
             <div className="service-item">
@@ -114,11 +114,11 @@ export default function HomePage() {
                 Швидкий і якісний монтаж меблів з гарантією правильного і
                 безпечного встановлення.
               </p>
-              <a class="btn-link learn-more">
-                <span class="circle" aria-hidden="true">
-                  <span class="icon arrow"></span>
+              <a className="btn-link learn-more">
+                <span className="circle" aria-hidden="true">
+                  <span className="icon arrow"></span>
                 </span>
-                <span class="btn-text">Дізнатися більше </span>
+                <span className="btn-text">Дізнатися більше </span>
               </a>
             </div>
             <div className="service-item">
@@ -127,11 +127,11 @@ export default function HomePage() {
               <p>
                 Професійний догляд і ремонт меблів, щоб вони служили вам довго.
               </p>
-              <a class="btn-link learn-more">
-                <span class="circle" aria-hidden="true">
-                  <span class="icon arrow"></span>
+              <a className="btn-link learn-more">
+                <span className="circle" aria-hidden="true">
+                  <span className="icon arrow"></span>
                 </span>
-                <span class="btn-text">Дізнатися більше </span>
+                <span className="btn-text">Дізнатися більше </span>
               </a>
             </div>
           </div>
