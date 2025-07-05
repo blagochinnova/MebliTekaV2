@@ -85,8 +85,8 @@
 
 .advantage-item p {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: 15px;
+  line-height: 1.2;
 }
 
 /*=== НАШІ ПОСЛУГИ ===*/
@@ -129,8 +129,8 @@
 
 .service-item p {
   margin: 0 0 15px 0;
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: 15px;
+  line-height: 1.2;
 }
 
 .btn-link {
