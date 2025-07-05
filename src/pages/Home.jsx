@@ -17,7 +17,7 @@ export default function HomePage() {
         <section className="hero-section">
           <div className="hero-content">
             <h1>Меблі для дому з історією перемоги</h1>
-            <Link className="button" href="/Catalog">
+            <Link className="button" to="/Catalog">
               Переглянути Каталог
             </Link>
           </div>
