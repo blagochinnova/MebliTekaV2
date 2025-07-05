@@ -35,7 +35,9 @@
   transform: scale(0.9);
   animation-name: fadeOutModal;
 }
-
+.modal h2 {
+  color: #145426;
+}
 .modal-content {
   background-color: var(--main-bg);
   margin: auto;

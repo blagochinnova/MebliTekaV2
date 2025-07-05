@@ -9,6 +9,7 @@ import wrenchIcon from "../assets/icons/wrench.svg";
 import gearSixIcon from "../assets/icons/gear-six.svg";
 
 import "../style/styles.css";
+import { Link } from "react-router-dom";
 export default function HomePage() {
   return (
     <main>
@@ -16,9 +17,9 @@ export default function HomePage() {
         <section className="hero-section">
           <div className="hero-content">
             <h1>Меблі для дому з історією перемоги</h1>
-            <a className="button" href="/Catalog">
+            <Link className="button" href="/Catalog">
               Переглянути Каталог
-            </a>
+            </Link>
           </div>
           <div className="image-grid">
             <img src="/images/main1.jpg" alt="" />

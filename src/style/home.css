@@ -241,6 +241,12 @@
   color: var(--icon-color);
   margin-bottom: 1rem;
 }
+@media (min-width: 480px) {
+  .advantage-item,
+  .service-item {
+    width: 48%;
+  }
+}
 @media only screen and (min-width: 768px) {
   .hero-content h1 {
     font-size: 60px;
@@ -265,12 +271,11 @@
   }
   .advantages-list,
   .services-list {
-    flex-wrap: nowrap;
     gap: 40px; /* більші відступи */
   }
   .advantage-item,
   .service-item {
-    width: auto; /* повертаємо до початкового */
+    width: auto;
     margin-bottom: 0;
   }
   &.learn-more {
