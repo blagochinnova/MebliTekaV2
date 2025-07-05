@@ -35,7 +35,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://mebliteka-backend-1.onrender.com", {
+      const response = await fetch("https://mebliteka-backend-1.onrender.com/api/consult", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

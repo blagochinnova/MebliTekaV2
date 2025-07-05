@@ -21,7 +21,7 @@ export default function ResumeModal({ onClose }) {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("https://mebliteka-backend-1.onrender.com", {
+      const response = await fetch("https://mebliteka-backend-1.onrender.com/api/send_resume", {
         method: "POST",
         body: formData,
       });
