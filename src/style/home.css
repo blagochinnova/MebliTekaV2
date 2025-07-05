@@ -263,6 +263,16 @@
     height: 64px;
     margin-bottom: 15px;
   }
+  .advantages-list,
+  .services-list {
+    flex-wrap: nowrap;
+    gap: 40px; /* більші відступи */
+  }
+  .advantage-item,
+  .service-item {
+    width: auto; /* повертаємо до початкового */
+    margin-bottom: 0;
+  }
   &.learn-more {
     .circle {
       width: 2.5rem; 
@@ -304,6 +314,19 @@
       }
     }
   }
+}
+.advantages-list,
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px; /* відступ між елементами */
+}
+
+.advantage-item,
+.service-item {
+  width: 48%; /* два в ряд */
+  margin-bottom: 20px;
 }
 @media only screen and (min-width: 1024px) {
   &.learn-more {

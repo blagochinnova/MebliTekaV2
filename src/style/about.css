@@ -1,40 +1,37 @@
+/* Базові стилі для мобільних (mobile first) */
+
 .mission-section {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* фото під текстом */
+  align-items: flex-start;
+  gap: 20px;
   flex-wrap: nowrap;
 }
+
 .mission-content {
-  min-width: 250px;
-}
-.mission-section h2 {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  text-align: left;
-}
-.mission-section p {
-  font-size: 20px;
-  font-weight: 400;
-}
-.mission-section img {
-  width: 400px;
+  min-width: auto; /* скидаємо мінімальну ширину для мобільних */
 }
 
-.team-section h2 {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  text-align: left;
+.mission-section img {
+  width: 100%; /* фото на всю ширину */
+  max-width: 400px; /* максимум, якщо хочеш */
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
-.team-intro {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+
 .team-list {
   display: flex;
-  gap: 40px; /* відстань між блоками */
-  flex-wrap: nowrap; /* щоб ряд не переносився */
+  flex-wrap: wrap; /* дозволяємо перенос */
+  gap: 15px; /* відступ між картками */
+  justify-content: flex-start;
+}
+
+.team-list > * {
+  flex: 1 1 calc(50% - 15px); /* 2 в рядок із відступом */
+  max-width: calc(50% - 15px);
+  box-sizing: border-box;
 }
 
 .team-list img {
@@ -44,19 +41,30 @@
   object-fit: cover;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
-.team-text {
-  font-size: 15px;
-  font-weight: 500;
-  padding: 10px 15px;
-  text-align: center;
-}
-.request-section h2 {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  text-align: left;
-}
-.request-section p {
-  font-size: 20px;
-  font-weight: 400;
+
+/* Додатково стилі для тексту залишаються без змін */
+
+/* Для планшетів і більше (горизонтальні секції) */
+@media only screen and (min-width: 768px) {
+  .mission-section {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+  .mission-content {
+    min-width: 250px;
+  }
+  .mission-section img {
+    width: 400px;
+  }
+
+  .team-list {
+    flex-wrap: nowrap; /* без переносу */
+    gap: 40px;
+  }
+  .team-list > * {
+    flex: none;
+    width: auto;
+    max-width: none;
+  }
 }
