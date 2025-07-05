@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
-import "../style/resume.css"; 
+import "../style/resume.css";
 
 export default function ResumeModal({ onClose }) {
-  // Закриття при кліку на бекдроп
   const handleBackdropClick = (e) => {
     if (e.target.classList.contains("modal-cv")) {
       onClose();
     }
   };
 
-  // Блокуємо прокрутку при відкритій модалці
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -17,18 +15,37 @@ export default function ResumeModal({ onClose }) {
     };
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://mebliteka-backend-1.onrender.com", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("Резюме надіслано успішно!");
+        form.reset();
+        onClose();
+      } else {
+        alert("Помилка відправки. Спробуйте ще раз.");
+      }
+    } catch (error) {
+      console.error("Помилка:", error);
+      alert("Помилка з'єднання з сервером.");
+    }
+  };
+
   return (
     <div className="modal-cv show" onClick={handleBackdropClick}>
       <div className="modal-content-cv">
         <span className="close-resume-modal" onClick={onClose}>
           &times;
         </span>
-        <form
-          action="send_resume.php"
-          method="post"
-          encType="multipart/form-data"
-          className="resume-form"
-        >
+        <form onSubmit={handleSubmit} className="resume-form">
           <h2>Надіслати резюме</h2>
 
           <label htmlFor="name">ПІБ:</label>

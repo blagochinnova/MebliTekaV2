@@ -10,6 +10,7 @@ export default function Header({ openModal }) {
     if (hamburgerRef.current && navMenuRef.current) {
       hamburgerRef.current.classList.toggle("active");
       navMenuRef.current.classList.toggle("active");
+      document.body.classList.toggle("body-blur", !isActive);
     }
   };
 
@@ -18,6 +19,7 @@ export default function Header({ openModal }) {
     if (hamburgerRef.current && navMenuRef.current) {
       hamburgerRef.current.classList.remove("active");
       navMenuRef.current.classList.remove("active");
+      document.body.classList.remove("body-blur");
     }
   };
 
@@ -61,7 +63,7 @@ export default function Header({ openModal }) {
       {/*Нижній хедер */}
 
       <nav className="navbar">
-        <div className="logo-container">
+        <div className="divLogo-container">
           <Link to="/">
             <img
               src="/images/logoN.png"
@@ -72,6 +74,11 @@ export default function Header({ openModal }) {
           </Link>
         </div>
         <ul className="nav-menu" ref={navMenuRef}>
+        <li className="nav-item">
+            <Link to="/" className="nav-link">
+              Головна
+            </Link>
+          </li>
           <li className="nav-item">
             <Link to="/Catalog" className="nav-link">
               Каталог

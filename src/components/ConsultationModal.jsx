@@ -6,21 +6,49 @@ import telegramIcon from "../assets/icons/telegram-logo.svg";
 export default function ConsultationModal({ isOpen, onClose }) {
   const [showClass, setShowClass] = useState(false);
   const [render, setRender] = useState(isOpen);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   useEffect(() => {
     if (isOpen) {
       setRender(true);
-      // Через наступний цикл, щоб застосувався клас show
       setTimeout(() => setShowClass(true), 10);
       document.body.style.overflow = "hidden";
     } else {
       setShowClass(false);
       document.body.style.overflow = "";
-      // Почекай анімацію закриття і потім вимкни рендер
       const timeout = setTimeout(() => setRender(false), 300);
       return () => clearTimeout(timeout);
     }
   }, [isOpen]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("https://mebliteka-backend-1.onrender.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      setSubmitStatus(result.message || result.error);
+      if (response.ok) {
+        setFormData({ name: "", phone: "", email: "", message: "" }); // Очищаємо форму
+      }
+    } catch (error) {
+      setSubmitStatus("Помилка відправки. Спробуйте ще раз.");
+    }
+  };
 
   if (!render) return null;
 
@@ -30,26 +58,52 @@ export default function ConsultationModal({ isOpen, onClose }) {
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="modal-content">
-        <span className="close-modal" onClick={onClose}>&times;</span>
+        <span className="close-modal" onClick={onClose}>×</span>
 
         <div className="contact-wrapper">
           <div className="form-column">
-            <form action="telegram.php" method="post" className="consultation-form">
+            <form onSubmit={handleSubmit} className="consultation-form">
               <h2>Замовити консультацію</h2>
 
               <label htmlFor="name">Ваше ім'я:</label>
-              <input type="text" id="name" name="name" required />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
 
               <label htmlFor="phone">Телефон:</label>
-              <input type="tel" id="phone" name="phone" required />
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
 
               <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name="email" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
 
               <label htmlFor="message">Коментар:</label>
-              <textarea name="message" rows="4" />
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows="4"
+              />
 
               <button className="button" type="submit">Надіслати</button>
+              {submitStatus && <p>{submitStatus}</p>}
             </form>
           </div>
 

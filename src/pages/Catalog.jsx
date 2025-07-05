@@ -10,10 +10,10 @@ const catalogData = [
   {
     title: "Кухня",
     images: [
-      { src: "/kitchen1.jpg", label: "Кухонний гарнітур “Модерн”" },
-      { src: "/kitchen2.jpg", label: "Кутова кухня з дерева" },
-      { src: "/kitchen3.jpg", label: "Кухня в скандинавському стилі" },
-      { src: "/kitchen4.jpg", label: "Кухня" },
+      { src: "/kitchen1.jpg" },
+      { src: "/kitchen2.jpg" },
+      { src: "/kitchen3.jpg" },
+      { src: "/kitchen4.jpg" },
       { src: "/kitchen5.jpg" },
       { src: "/kitchen6.jpg" },
       { src: "/kitchen7.jpg" },
@@ -22,10 +22,10 @@ const catalogData = [
   {
     title: "Спальня",
     images: [
-      { src: "/bedroom1.jpg", label: "Спальня" },
-      { src: "/bedroom2.jpg", label: "Спальня" },
-      { src: "/bedroom3.jpg", label: "Спальня" },
-      { src: "/bedroom4.jpg", label: "Спальня" },
+      { src: "/bedroom1.jpg" },
+      { src: "/bedroom2.jpg" },
+      { src: "/bedroom3.jpg" },
+      { src: "/bedroom4.jpg" },
       { src: "/bedroom5.jpg" },
       { src: "/bedroom6.jpg" },
     ],
@@ -34,7 +34,7 @@ const catalogData = [
     title: "Вітальня",
     images: [
       { src: "/living1.jpg" },
-      { src: "/living2.jpg" }, // Тут, typo: має бути .jpg
+      { src: "/living2.jpg" }, 
       { src: "/living3.jpg" },
       { src: "/living4.jpg" },
       { src: "/living5.jpg" },
@@ -45,11 +45,40 @@ const catalogData = [
     title: "Передпокій",
     images: [
       { src: "/corridor1.jpg" },
-      { src: "/corridor2.jpg", label: "Передпокій" },
+      { src: "/corridor2.jpg" },
       { src: "/corridor3.jpg" },
       { src: "/corridor4.jpg" },
       { src: "/corridor5.jpg" },
       { src: "/corridor6.jpg" },
+    ],
+  },
+  {
+    title: "Гардеробні системи",
+    images: [
+      { src: "/wardrobe1.jpg" },
+      { src: "/wardrobe2.jpg" },
+      { src: "/wardrobe3.jpg"},
+      { src: "/wardrobe4.jpg"},
+      { src: "/wardrobe5.jpg" },
+    ],
+  },
+  {
+    title: "Комоди, тумби",
+    images: [
+      { src: "/card1.jpg" },
+      { src: "/card2.jpg" },
+      { src: "/card3.jpg"},
+      { src: "/card4.jpg"},
+      { src: "/card5.jpg" },
+    ],
+  },
+  {
+    title: "Модульні стінки",
+    images: [
+      { src: "/modularwalls1.jpg" },
+      { src: "/modularwalls2.jpg" },
+      { src: "/modularwalls3.jpg"},
+      { src: "/modularwalls4.jpg"},
     ],
   },
 ];
@@ -57,6 +86,7 @@ const catalogData = [
 export default function Catalog() {
   return (
     <main>
+      <h2 className="page-title">Рішення, які ми реалізуємо за вашим бажанням і макетом.</h2>
       <div className="container kitchen-page">
         {catalogData.map((category, index) => (
           <section key={index} className="catalog-section">
