@@ -21,7 +21,7 @@ export default function About() {
                 підтримку в колективі.
               </p>
             </div>
-            <img src="/images/main1.jpg" alt="" />
+            <img src="/images/LogoN.png" alt="" />
           </section>
 
           <section className="team-section">

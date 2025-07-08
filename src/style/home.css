@@ -5,7 +5,12 @@
 ) {
   transition: $property $duration $ease;
 }
-
+@media (min-width: 480px) {
+  .advantage-item,
+  .service-item {
+    width: 40%;
+  }
+}
 /*=== HERO ===*/
 .hero-section {
   display: flex;
@@ -40,7 +45,7 @@
 
 .image-grid img {
   width: 100%;
-  height: auto;
+  height: 240px;
   border-radius: 10px;
   object-fit: cover;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
@@ -56,8 +61,9 @@
 
 .advantages-list {
   display: flex;
-  gap: 40px; /* відстань між блоками */
-  flex-wrap: nowrap; /* щоб ряд не переносився */
+  gap: 10px; /* Зменшено для кращої адаптивності */
+  flex-wrap: wrap; /* Дозволяємо переносити елементи */
+  justify-content: space-between; /* Розподіляємо елементи рівномірно */
 }
 
 .advantage-item {
@@ -65,6 +71,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
+  width: 48%;
 }
 
 .advantage-item a {
@@ -73,8 +80,8 @@
 }
 
 .advantage-item img {
-  width: 50px; /* збільшена іконка */
-  height: 50px;
+  width: 40px; /* збільшена іконка */
+  height: 40px;
   margin-bottom: 10px;
 }
 
@@ -103,8 +110,9 @@
 
 .services-list {
   display: flex;
-  gap: 40px; /* Відстань між блоками */
-  flex-wrap: nowrap; /* Щоб блоки не переносились */
+  gap: 20px; /* Зменшено для кращої адаптивності */
+  flex-wrap: wrap; /* Дозволяємо переносити елементи */
+  justify-content: space-between; /* Розподіляємо елементи рівномірно */
 }
 
 .service-item {
@@ -114,6 +122,7 @@
   text-align: left;
   color: inherit;
   text-decoration: none;
+  width: 48%;
 }
 
 .service-item img {
@@ -124,12 +133,12 @@
 
 .service-item h3 {
   margin: 0 0 10px 0;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .service-item p {
   margin: 0 0 15px 0;
-  font-size: 15px;
+  font-size: 10px;
   line-height: 1.2;
 }
 
@@ -241,11 +250,12 @@
   color: var(--icon-color);
   margin-bottom: 1rem;
 }
-@media (min-width: 480px) {
-  .advantage-item,
-  .service-item {
-    width: 48%;
-  }
+.advantages-list,
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px; /* відступ між елементами */
 }
 @media only screen and (min-width: 768px) {
   .hero-content h1 {
@@ -269,15 +279,15 @@
     height: 64px;
     margin-bottom: 15px;
   }
-  .advantages-list,
-  .services-list {
-    gap: 40px; /* більші відступи */
-  }
   .advantage-item,
   .service-item {
     width: auto;
     margin-bottom: 0;
   }
+  .advantages-list,
+.services-list {
+  gap: 20px; /* відступ між елементами */
+}
   &.learn-more {
     .circle {
       width: 2.5rem; 
@@ -320,17 +330,9 @@
     }
   }
 }
-.advantages-list,
-.services-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px; /* відступ між елементами */
-}
 
 .advantage-item,
 .service-item {
-  width: 48%; /* два в ряд */
   margin-bottom: 20px;
 }
 @media only screen and (min-width: 1024px) {
