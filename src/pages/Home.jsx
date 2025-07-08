@@ -32,7 +32,7 @@ export default function HomePage() {
           <h2>Наші переваги</h2>
           <div className="advantages-list">
             <div className="advantage-item">
-              <a href="#">
+              
                 <img src={pencilRulerIcon} alt="" />
                 <h3>Індивідуальний дизайн</h3>
                 <p>
@@ -40,10 +40,10 @@ export default function HomePage() {
                   Враховуємо кожну деталь — стиль, функціональність, побажання.
                   Ваш інтер'єр — ваші правила.
                 </p>
-              </a>
+            
             </div>
             <div className="advantage-item">
-              <a href="#">
+           
                 <img src={stackIcon} alt="" />
                 <h3>Якісні матеріали</h3>
                 <p>
@@ -51,20 +51,20 @@ export default function HomePage() {
                   для комфорту, естетики й надійності на роки. Меблі, якими
                   хочеться користуватися щодня.
                 </p>
-              </a>
+          
             </div>
             <div className="advantage-item">
-              <a href="#">
+          
                 <img src={shieldIcon} alt="" />
                 <h3>Гарантія до 5 років</h3>
                 <p>
                   Ми впевнені в якості нашої роботи — саме тому надаємо гарантію
                   до 5 років на всі вироби. Надійність, підтверджена часом.
                 </p>
-              </a>
+  
             </div>
             <div className="advantage-item">
-              <a href="#">
+  
                 <img src={clockIcon} alt="" />
                 <h3>Швидке виготовлення</h3>
                 <p>
@@ -72,7 +72,7 @@ export default function HomePage() {
                   максимально короткі строки, не жертвуючи якістю. Ваші ідеї
                   втілюються в життя швидко та професійно!
                 </p>
-              </a>
+  
             </div>
           </div>
         </section>
@@ -87,12 +87,12 @@ export default function HomePage() {
                 Індивідуальний підхід до створення стильних та функціональних
                 меблів, які ідеально впишуться у ваш інтер’єр.
               </p>
-              <a className="btn-link learn-more">
+              {/* <a className="btn-link learn-more">
                 <span className="circle" aria-hidden="true">
                   <span className="icon arrow"></span>
                 </span>
                 <span className="btn-text">Дізнатися більше </span>
-              </a>
+              </a> */}
             </div>
             <div className="service-item">
               <img src={hammerIcon} alt="" />
@@ -101,12 +101,12 @@ export default function HomePage() {
                 Професійне виготовлення меблів на замовлення з урахуванням ваших
                 побажань і сучасних стандартів якості.
               </p>
-              <a className="btn-link learn-more">
+              {/* <a className="btn-link learn-more">
                 <span className="circle" aria-hidden="true">
                   <span className="icon arrow"></span>
                 </span>
                 <span className="btn-text">Дізнатися більше </span>
-              </a>
+              </a> */}
             </div>
             <div className="service-item">
               <img src={wrenchIcon} alt="" />
@@ -115,12 +115,12 @@ export default function HomePage() {
                 Швидкий і якісний монтаж меблів з гарантією правильного і
                 безпечного встановлення.
               </p>
-              <a className="btn-link learn-more">
+              {/* <a className="btn-link learn-more">
                 <span className="circle" aria-hidden="true">
                   <span className="icon arrow"></span>
                 </span>
                 <span className="btn-text">Дізнатися більше </span>
-              </a>
+              </a> */}
             </div>
             <div className="service-item">
               <img src={gearSixIcon} alt="" />
@@ -128,12 +128,12 @@ export default function HomePage() {
               <p>
                 Професійний догляд і ремонт меблів, щоб вони служили вам довго.
               </p>
-              <a className="btn-link learn-more">
+              {/* <a className="btn-link learn-more">
                 <span className="circle" aria-hidden="true">
                   <span className="icon arrow"></span>
                 </span>
                 <span className="btn-text">Дізнатися більше </span>
-              </a>
+              </a> */}
             </div>
           </div>
         </section>
