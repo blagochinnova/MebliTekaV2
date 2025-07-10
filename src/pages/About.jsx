@@ -6,6 +6,14 @@ export default function About() {
   const [isConsultationOpen, setConsultationOpen] = useState(false);
   const [isResumeOpen, setResumeOpen] = useState(false);
 
+  // Дані про працівників
+  const teamMembers = [
+    { id: 1, name: "Іван Іванов", role: "Дизайнер", image: "worker1.jpg" },
+    { id: 2, name: "Марія Петрова", role: "Архітектор", image: "worker2.jpg" },
+    { id: 3, name: "Олег Сидоров", role: "Менеджер", image: "worker3.jpg" },
+    { id: 4, name: "Анна Коваль", role: "Консультант", image: "worker4.jpg" },
+  ];
+
   return (
     <>
       <main>
@@ -21,7 +29,7 @@ export default function About() {
                 підтримку в колективі.
               </p>
             </div>
-            <img src="/images/LogoN.png" alt="" />
+            <img src="/images/LogoN." alt="" />
           </section>
 
           <section className="team-section">
@@ -32,16 +40,14 @@ export default function About() {
             </p>
 
             <div className="team-list">
-              {[1, 2, 3, 4].map((n, i) => (
-                <div className="member" key={i}>
+              {teamMembers.map((member, i) => (
+                <div className="member" key={member.id}>
                   <img
-                    src={`../image/${
-                      n % 2 === 0 ? "IMG_4529.jpg" : "IMG_4141.jpg"
-                    }`}
-                    alt={`Фото працівника ${i + 1}`}
+                    src={`/images/${member.image}`} // Використовуємо унікальне зображення для кожного
+                    alt={`Фото працівника ${member.name}`}
                   />
                   <p className="team-text">
-                    Ім’я Прізвище — короткий опис спеціальності або ролі.
+                    {member.name} — {member.role}
                   </p>
                 </div>
               ))}

@@ -14,7 +14,7 @@
 
 .mission-section img {
   width: 100%; /* фото на всю ширину */
-  max-width: 400px; /* максимум, якщо хочеш */
+  max-width: 400px; /* максимум, якщо хочете */
   height: auto;
   border-radius: 10px;
   object-fit: cover;
@@ -35,13 +35,15 @@
 }
 
 .team-list img {
-  width: 100%;
-  height: auto;
+  width: 100%; /* Ширина адаптується до контейнера */
+  height: 200px; /* Фіксована висота для однаковості */
   border-radius: 10px;
-  object-fit: cover;
+  object-fit: cover; /* Обрізає зображення, зберігаючи пропорції */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
-
+.team-intro {
+  margin-bottom: 10px;
+}
 /* Додатково стилі для тексту залишаються без змін */
 
 /* Для планшетів і більше (горизонтальні секції) */
@@ -66,5 +68,22 @@
     flex: none;
     width: auto;
     max-width: none;
+  }
+  .team-list img {
+    height: 250px; /* Збільшена висота для великих екранів */
+  }
+  .mission-section h2,
+  .team-section h2,
+  .request-section h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+  .mission-section p,
+  .team-section p,
+  .request-section p {
+    font-size: 20px;
+  }
+  .team-intro {
+    margin-bottom: 20px;
   }
 }

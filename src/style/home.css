@@ -265,14 +265,27 @@
     font-size: 40px;
     margin-bottom: 30px;
   }
+  .advantage-item > h3 {
+    font-size: 30px;
+  }
+  .advantage-item p {
+    font-size: 20px;
+  }
   .advantage-item img {
     width: 64px; /* збільшена іконка */
     height: 64px;
     margin-bottom: 15px;
   }
   .services-section > h2 {
-    font-size: 40px;
+    font-size: 50px;
     margin-bottom: 30px;
+  }
+  .service-item > h3 {
+    font-size: 30px;
+  }
+  .service-item p {
+    font-size: 20px;
+    line-height: 1.2;
   }
   .service-item img {
     width: 64px; /* Збільшена іконка */

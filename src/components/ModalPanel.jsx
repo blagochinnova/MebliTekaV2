@@ -1,48 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import facebookIcon from "../assets/icons/facebook-logo.svg";
 import instagramIcon from "../assets/icons/instagram-logo.svg";
 import ConsultationModal from "./ConsultationModal";
 
 export default function ModalPanel({ isOpen, onClose }) {
   const [showConsultation, setShowConsultation] = useState(false);
+  const iframeRef = useRef(null);
 
   useEffect(() => {
-    if (!isOpen) return;
-
-    const quizData = [
-      { question: "Який стиль вам подобається?", options: ["Модерн", "Класика", "Мінімалізм"], answer: "Модерн" },
-      { question: "Яка кімната потребує оновлення?", options: ["Вітальня", "Спальня", "Кухня"], answer: "Вітальня" }
-    ];
-    let currentQuestion = 0;
-    let score = 0;
-
-    function showQuestion() {
-      const q = quizData[currentQuestion];
-      document.getElementById("question").innerText = q.question;
-      const optionsDiv = document.getElementById("options");
-      optionsDiv.innerHTML = "";
-      q.options.forEach(option => {
-        const button = document.createElement("button");
-        button.innerText = option;
-        button.onclick = () => checkAnswer(option);
-        optionsDiv.appendChild(button);
-      });
+    if (isOpen && iframeRef.current) {
+      iframeRef.current.src = "https://mrqz.to/68701bb9af63bf003397084b";
+      iframeRef.current.onload = () => console.log("Iframe loaded successfully");
+      iframeRef.current.onerror = () => console.log("Iframe failed to load");
     }
-
-    function checkAnswer(selected) {
-      if (selected === quizData[currentQuestion].answer) score++;
-      currentQuestion++;
-      if (currentQuestion < quizData.length) showQuestion();
-      else {
-        document.getElementById("quiz").innerHTML = `<h4>Результат: ${score} з ${quizData.length}</h4>`;
-      }
-    }
-
-    showQuestion();
-
-    return () => {
-      document.getElementById("quiz").innerHTML = '<h4 id="question"></h4><div id="options"></div>';
-    };
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -50,20 +20,29 @@ export default function ModalPanel({ isOpen, onClose }) {
   return (
     <div className="modal-panel" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="modal-panel-content">
-        <span className="close-modal" onClick={onClose}>×</span>
+        <span className="close-modal-quiz" onClick={onClose}>×</span>
 
         <h2>Додаткові опції</h2>
 
-        {/* Квіз */}
         <div className="quiz-section">
           <h3>Пройдіть наш квіз!</h3>
-          <div id="quiz">
-            <h4 id="question"></h4>
-            <div id="options"></div>
-          </div>
+          <iframe
+            ref={iframeRef}
+            title="Marquiz Quiz"
+            width="100%"
+            height="600"
+            frameBorder="0"
+            allowFullScreen
+            sandbox="allow-scripts allow-popups allow-forms" // Видалено allow-same-origin
+            style={{ minHeight: "600px", border: "1px solid #ccc", visibility: "visible" }} // Додано visibility для тестування
+          ></iframe>
+          {process.env.NODE_ENV === "development" && (
+            <p style={{ color: "red" }}>
+              Quiz loaded, but not visible? Check DevTools Elements tab or contact Marquiz support.
+            </p>
+          )}
         </div>
 
-        {/* Соціальні мережі */}
         <div className="social-links">
           <h3>Ми у соціальних мережах:</h3>
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
@@ -74,7 +53,6 @@ export default function ModalPanel({ isOpen, onClose }) {
           </a>
         </div>
 
-        {/* Замовити консультацію */}
         <button onClick={() => setShowConsultation(true)}>Замовити консультацію</button>
         {showConsultation && <ConsultationModal isOpen={true} onClose={() => setShowConsultation(false)} />}
       </div>
