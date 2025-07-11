@@ -22,7 +22,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
     } else {
       setShowClass(false);
       document.body.style.overflow = "";
-      const timeout = setTimeout(() => setRender(false), 400); // трішки довше
+      const timeout = setTimeout(() => setRender(false), 400);
       return () => clearTimeout(timeout);
     }
   }, [isOpen]);
@@ -48,7 +48,6 @@ export default function ConsultationModal({ isOpen, onClose }) {
 
       if (response.ok) {
         setFormData({ name: "", phone: "", email: "", message: "" });
-        // Автоматично ховаємо повідомлення через 3 сек
         setTimeout(() => setSubmitStatus(null), 3000);
       }
     } catch (error) {
@@ -79,7 +78,6 @@ export default function ConsultationModal({ isOpen, onClose }) {
           <div className="form-column">
             <form onSubmit={handleSubmit} className="consultation-form">
               <h2>Замовити консультацію</h2>
-
               <label htmlFor="name">Ваше ім'я:</label>
               <input
                 type="text"
@@ -88,8 +86,8 @@ export default function ConsultationModal({ isOpen, onClose }) {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                placeholder="Введіть ім'я"
               />
-
               <label htmlFor="phone">Телефон:</label>
               <input
                 type="tel"
@@ -98,8 +96,10 @@ export default function ConsultationModal({ isOpen, onClose }) {
                 value={formData.phone}
                 onChange={handleChange}
                 required
+                placeholder="+38 (XXX) XXX-XX-XX"
+                pattern="\+38\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}"
+                title="Формат: +38 (XXX) XXX-XX-XX"
               />
-
               <label htmlFor="email">Email:</label>
               <input
                 type="email"
@@ -107,23 +107,22 @@ export default function ConsultationModal({ isOpen, onClose }) {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="example@email.com"
               />
-
               <label htmlFor="message">Коментар:</label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
+                placeholder="Ваш коментар"
               />
-
               <button className="button" type="submit">
                 Надіслати
               </button>
               {submitStatus && <p className="form-status">{submitStatus}</p>}
             </form>
           </div>
-
           <div className="info-column">
             <div className="info-overlay">
               <h2>Зв'яжіться з нами</h2>
@@ -137,7 +136,6 @@ export default function ConsultationModal({ isOpen, onClose }) {
                 <br />
                 +38 (099) 473-70-98
               </p>
-
               <div className="social">
                 <p>Ми у соціальних мережах:</p>
                 <a href="https://www.facebook.com/profile.php?id=61576658885220&rdid=j2hcV4T25TPqIMyx&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DvvynfVmR%2F">
@@ -145,6 +143,9 @@ export default function ConsultationModal({ isOpen, onClose }) {
                 </a>
                 <a href="https://www.instagram.com/mebli_teka?igsh=MWF2ZTRyMHJ2Y3R4Nw==">
                   <img src={instagramIcon} alt="Instagram" />
+                </a>
+                <a href="https://t.me/+380994737098">
+                  <img src={telegramIcon} alt="Telegram" />
                 </a>
               </div>
             </div>

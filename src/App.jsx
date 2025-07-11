@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"; // Без BrowserRouter
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ConsultationModal from "./components/ConsultationModal";
+import ModalPanel from "./components/ModalPanel";
 import SideButton from "./components/SideButton";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -10,8 +11,13 @@ import Services from "./pages/Services";
 import { useState } from "react";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Для ConsultationModal
+  const [isPanelOpen, setIsPanelOpen] = useState(false); // Для ModalPanel і SideButton
+
+  // Діагностика
+  console.log("Modal Open:", isModalOpen);
+  console.log("Panel Open:", isPanelOpen);
+
   return (
     <>
       <Header openModal={() => setIsModalOpen(true)} />
@@ -21,17 +27,16 @@ function App() {
         <Route path="/Catalog" element={<Catalog />} />
         <Route path="/Services" element={<Services />} />
       </Routes>
-
       <Footer />
       <ConsultationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
       <SideButton
-          isOpen={isSidePanelOpen}
-          onOpen={() => setIsSidePanelOpen(true)}
-          onClose={() => setIsSidePanelOpen(false)}
-        />
+        isOpen={isPanelOpen}
+        onOpen={() => setIsPanelOpen(true)}
+        onClose={() => setIsPanelOpen(false)}
+      />
     </>
   );
 }

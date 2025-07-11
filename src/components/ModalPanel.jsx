@@ -13,14 +13,18 @@ export default function ModalPanel({ isOpen, onClose }) {
       iframeRef.current.onload = () =>
         console.log("Iframe loaded successfully");
       iframeRef.current.onerror = () => console.log("Iframe failed to load");
+    } else if (!isOpen && iframeRef.current) {
+      iframeRef.current.src = ""; // Очищаємо src при закритті
     }
   }, [isOpen]);
 
   if (!isOpen) return null;
 
+  console.log("ModalPanel isOpen:", isOpen); // Діагностика
+
   return (
     <div
-      className="modal-panel"
+      className={`modal-panel ${isOpen ? "show" : ""}`} // Додано клас show
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="modal-panel-content">
@@ -28,10 +32,10 @@ export default function ModalPanel({ isOpen, onClose }) {
           ×
         </span>
 
-        <h2>Додаткові опції</h2>
+        <h2 className="quiz-main-title">Додаткові опції</h2>
 
         <div className="quiz-section">
-          <h3>Пройдіть наш квіз!</h3>
+          <h3 className="quiz-title">Пройдіть наш квіз!</h3>
           <iframe
             ref={iframeRef}
             title="Marquiz Quiz"
@@ -41,10 +45,10 @@ export default function ModalPanel({ isOpen, onClose }) {
             allowFullScreen
             sandbox="allow-scripts allow-popups allow-forms"
             style={{
-              minHeight: "600px",
+              minHeight: "400px",
               border: "1px solid #ccc",
               visibility: "visible",
-            }} // Додано visibility для тестування
+            }}
           ></iframe>
           {process.env.NODE_ENV === "development" && (
             <p style={{ color: "red" }}>
@@ -55,25 +59,17 @@ export default function ModalPanel({ isOpen, onClose }) {
         </div>
 
         <div className="social-links">
-          <h3>Ми у соціальних мережах:</h3>
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <h3 className="quiz-title">Ми у соціальних мережах:</h3>
+          <a className="soc-icon" href="https://facebook.com" target="_blank" rel="noopener noreferrer">
             <img src={facebookIcon} alt="Facebook" />
           </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="soc-icon" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <img src={instagramIcon} alt="Instagram" />
           </a>
         </div>
 
-        <button className="button" onClick={() => setShowConsultation(true)}>
-          Замовити консультацію
+        <button className="button-quiz" onClick={() => setShowConsultation(true)}>
+          Надіслати
         </button>
         {showConsultation && (
           <ConsultationModal
