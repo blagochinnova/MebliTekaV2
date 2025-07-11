@@ -10,7 +10,8 @@ export default function ModalPanel({ isOpen, onClose }) {
   useEffect(() => {
     if (isOpen && iframeRef.current) {
       iframeRef.current.src = "https://mrqz.to/68701bb9af63bf003397084b";
-      iframeRef.current.onload = () => console.log("Iframe loaded successfully");
+      iframeRef.current.onload = () =>
+        console.log("Iframe loaded successfully");
       iframeRef.current.onerror = () => console.log("Iframe failed to load");
     }
   }, [isOpen]);
@@ -18,9 +19,14 @@ export default function ModalPanel({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-panel" onClick={(e) => e.target === e.currentTarget && onClose()}>
+    <div
+      className="modal-panel"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
       <div className="modal-panel-content">
-        <span className="close-modal-quiz" onClick={onClose}>×</span>
+        <span className="close-modal-quiz" onClick={onClose}>
+          ×
+        </span>
 
         <h2>Додаткові опції</h2>
 
@@ -33,28 +39,48 @@ export default function ModalPanel({ isOpen, onClose }) {
             height="600"
             frameBorder="0"
             allowFullScreen
-            sandbox="allow-scripts allow-popups allow-forms" // Видалено allow-same-origin
-            style={{ minHeight: "600px", border: "1px solid #ccc", visibility: "visible" }} // Додано visibility для тестування
+            sandbox="allow-scripts allow-popups allow-forms"
+            style={{
+              minHeight: "600px",
+              border: "1px solid #ccc",
+              visibility: "visible",
+            }} // Додано visibility для тестування
           ></iframe>
           {process.env.NODE_ENV === "development" && (
             <p style={{ color: "red" }}>
-              Quiz loaded, but not visible? Check DevTools Elements tab or contact Marquiz support.
+              Quiz loaded, but not visible? Check DevTools Elements tab or
+              contact Marquiz support.
             </p>
           )}
         </div>
 
         <div className="social-links">
           <h3>Ми у соціальних мережах:</h3>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={facebookIcon} alt="Facebook" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={instagramIcon} alt="Instagram" />
           </a>
         </div>
 
-        <button onClick={() => setShowConsultation(true)}>Замовити консультацію</button>
-        {showConsultation && <ConsultationModal isOpen={true} onClose={() => setShowConsultation(false)} />}
+        <button className="button" onClick={() => setShowConsultation(true)}>
+          Замовити консультацію
+        </button>
+        {showConsultation && (
+          <ConsultationModal
+            isOpen={true}
+            onClose={() => setShowConsultation(false)}
+          />
+        )}
       </div>
     </div>
   );

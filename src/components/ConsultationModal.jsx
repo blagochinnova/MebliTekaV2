@@ -22,7 +22,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
     } else {
       setShowClass(false);
       document.body.style.overflow = "";
-      const timeout = setTimeout(() => setRender(false), 300);
+      const timeout = setTimeout(() => setRender(false), 400); // трішки довше
       return () => clearTimeout(timeout);
     }
   }, [isOpen]);
@@ -35,15 +35,21 @@ export default function ConsultationModal({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://mebliteka-backend-1.onrender.com/api/consult", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://mebliteka-backend-1.onrender.com/api/consult",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
       const result = await response.json();
       setSubmitStatus(result.message || result.error);
+
       if (response.ok) {
-        setFormData({ name: "", phone: "", email: "", message: "" }); // Очищаємо форму
+        setFormData({ name: "", phone: "", email: "", message: "" });
+        // Автоматично ховаємо повідомлення через 3 сек
+        setTimeout(() => setSubmitStatus(null), 3000);
       }
     } catch (error) {
       setSubmitStatus("Помилка відправки. Спробуйте ще раз.");
@@ -56,9 +62,18 @@ export default function ConsultationModal({ isOpen, onClose }) {
     <div
       className={`modal ${showClass ? "show" : "hide"}`}
       onClick={(e) => e.target === e.currentTarget && onClose()}
+      role="dialog"
+      aria-modal="true"
     >
       <div className="modal-content">
-        <span className="close-modal" onClick={onClose}>×</span>
+        <span
+          className="close-modal"
+          onClick={onClose}
+          role="button"
+          aria-label="Закрити"
+        >
+          ×
+        </span>
 
         <div className="contact-wrapper">
           <div className="form-column">
@@ -102,26 +117,42 @@ export default function ConsultationModal({ isOpen, onClose }) {
                 rows="4"
               />
 
-              <button className="button" type="submit">Надіслати</button>
-              {submitStatus && <p>{submitStatus}</p>}
+              <button className="button" type="submit">
+                Надіслати
+              </button>
+              {submitStatus && <p className="form-status">{submitStatus}</p>}
             </form>
           </div>
 
           <div className="info-column">
             <div className="info-overlay">
               <h2>Зв'яжіться з нами</h2>
-              <p><strong>Адреса:</strong><br />вул. Гарна, 21, Київ</p>
-              <p><strong>Email:</strong><br />info@site.com</p>
-              <p><strong>Телефон:</strong><br />+38 (099) 473-70-98</p>
+              <p>
+                <strong>Адреса:</strong>
+                <br />
+                вул. Гарна, 21, Київ
+              </p>
+              <p>
+                <strong>Телефон:</strong>
+                <br />
+                +38 (099) 473-70-98
+              </p>
 
               <div className="social">
                 <p>Ми у соціальних мережах:</p>
-                <a href="#"><img src={facebookIcon} alt="Facebook" /></a>
-                <a href="#"><img src={instagramIcon} alt="Instagram" /></a>
-                <a href="#"><img src={telegramIcon} alt="Telegram" /></a>
+                <a href="https://www.facebook.com/profile.php?id=61576658885220&rdid=j2hcV4T25TPqIMyx&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DvvynfVmR%2F">
+                  <img src={facebookIcon} alt="Facebook" />
+                </a>
+                <a href="https://www.instagram.com/mebli_teka?igsh=MWF2ZTRyMHJ2Y3R4Nw==">
+                  <img src={instagramIcon} alt="Instagram" />
+                </a>
               </div>
             </div>
-            <img src="/images/living8.jpg" alt="Contact image" className="contact-image" />
+            <img
+              src="/images/living8.jpg"
+              alt="Інтер'єр кімнати"
+              className="contact-image"
+            />
           </div>
         </div>
       </div>

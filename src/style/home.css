@@ -110,7 +110,7 @@
 
 .services-list {
   display: flex;
-  gap: 20px; /* Зменшено для кращої адаптивності */
+  gap: 10px; /* Зменшено для кращої адаптивності */
   flex-wrap: wrap; /* Дозволяємо переносити елементи */
   justify-content: space-between; /* Розподіляємо елементи рівномірно */
 }
@@ -138,7 +138,7 @@
 
 .service-item p {
   margin: 0 0 15px 0;
-  font-size: 10px;
+  font-size: 15px;
   line-height: 1.2;
 }
 
@@ -250,13 +250,6 @@
   color: var(--icon-color);
   margin-bottom: 1rem;
 }
-.advantages-list,
-.services-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 10px; /* відступ між елементами */
-}
 @media only screen and (min-width: 768px) {
   .hero-content h1 {
     font-size: 60px;
@@ -285,7 +278,6 @@
   }
   .service-item p {
     font-size: 20px;
-    line-height: 1.2;
   }
   .service-item img {
     width: 64px; /* Збільшена іконка */
@@ -298,37 +290,37 @@
     margin-bottom: 0;
   }
   .advantages-list,
-.services-list {
-  gap: 20px; /* відступ між елементами */
-}
+  .services-list {
+    gap: 20px; /* відступ між елементами */
+  }
   &.learn-more {
     .circle {
-      width: 2.5rem; 
-      height: 2.5rem; 
-      border-radius: 1.25rem; 
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 1.25rem;
 
       .icon {
         &.arrow {
-          left: 0.5rem; 
-          width: 1rem; 
-          height: 0.1rem; 
+          left: 0.5rem;
+          width: 1rem;
+          height: 0.1rem;
 
           &::before {
-            top: -0.2rem; 
-            right: 0.05rem; 
-            width: 0.5rem; 
-            height: 0.5rem; 
-            border-top: 0.1rem solid #d8d8d8; 
+            top: -0.2rem;
+            right: 0.05rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-top: 0.1rem solid #d8d8d8;
             border-right: 0.1rem solid #d8d8d8;
           }
         }
       }
 
       .btn-text {
-        padding: 0.5rem 0; 
-        margin: 0 0 0 1.5rem; 
-        font-size: 0.9rem; 
-        line-height: 1.2; 
+        padding: 0.5rem 0;
+        margin: 0 0 0 1.5rem;
+        font-size: 0.9rem;
+        line-height: 1.2;
       }
     }
 
@@ -336,46 +328,41 @@
       .circle {
         .icon {
           &.arrow {
-            transform: translate(0.8rem, 0); 
+            transform: translate(0.8rem, 0);
           }
         }
       }
     }
   }
 }
-
-.advantage-item,
-.service-item {
-  margin-bottom: 20px;
-}
 @media only screen and (min-width: 1024px) {
   &.learn-more {
     .circle {
-      width: 3rem; 
-      height: 3rem; 
-      border-radius: 1.625rem; 
+      width: 3rem;
+      height: 3rem;
+      border-radius: 1.625rem;
 
       .icon {
         &.arrow {
-          left: 0.625rem; 
-          width: 1.125rem; 
-          height: 0.125rem; 
+          left: 0.625rem;
+          width: 1.125rem;
+          height: 0.125rem;
           &::before {
-            top: -0.25rem; 
-            right: 0.0625rem; 
-            width: 0.625rem; 
-            height: 0.625rem; 
+            top: -0.25rem;
+            right: 0.0625rem;
+            width: 0.625rem;
+            height: 0.625rem;
             border-top: 0.125rem solid #d8d8d8;
-            border-right: 0.125rem solid #d8d8d8; 
+            border-right: 0.125rem solid #d8d8d8;
           }
         }
       }
 
       .btn-text {
-        padding: 0.75rem 0; 
-        margin: 0 0 0 1.85rem; 
-        font-size: 1rem; 
-        line-height: 1.4; 
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        font-size: 1rem;
+        line-height: 1.4;
       }
     }
 
@@ -383,7 +370,7 @@
       .circle {
         .icon {
           &.arrow {
-            transform: translate(1rem, 0); 
+            transform: translate(1rem, 0);
           }
         }
       }

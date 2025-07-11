@@ -1,26 +1,80 @@
 .fixed-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: var(--accent-green);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    z-index: 1000;
-    transition: transform 0.3s ease;
-  }
-  
-  .fixed-button:hover {
-    transform: scale(1.1);
-  }
-  
-  .fixed-button img {
-    width: 30px;
-    height: 30px;
-    filter: brightness(0) invert(1); /* Для контрасту на зеленому фоні */
-  }
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.fixed-button:hover {
+  transform: scale(1.1);
+}
+
+.fixed-button img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1); /* Для контрасту на зеленому фоні */
+}
+/* МОДАЛЬНЕ ВІКНО КВІЗУ */
+.modal-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #145426;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.modal-panel-content {
+  background-color: #d8d8d8;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal-panel h2,
+.modal-panel h3 {
+  color: #145426;
+}
+.close-modal-quiz {
+  position: absolute;
+  top: 15px;
+  right: 90px; /* трохи ближче */
+  color: #145426;
+  font-size: 30px; /* трохи менше */
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.quiz-section,
+.social-links {
+  margin: 20px 0;
+}
+
+.social-links a {
+  color: #145426;
+  margin-right: 10px;
+}
+
+.social-links img {
+  width: 30px;
+  height: 30px;
+  color: #145426;
+}
