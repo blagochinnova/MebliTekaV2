@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom"; // Без BrowserRouter
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ConsultationModal from "./components/ConsultationModal";
-import ModalPanel from "./components/ModalPanel";
-import SideButton from "./components/SideButton";
+import QuizModal from "./components/QuizModal.jsx";
+import FloatingQuizButton from "./components/FloatingQuizButton";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Catalog from "./pages/Catalog";
@@ -32,11 +32,7 @@ function App() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
-      <SideButton
-        isOpen={isPanelOpen}
-        onOpen={() => setIsPanelOpen(true)}
-        onClose={() => setIsPanelOpen(false)}
-      />
+      <FloatingQuizButton />
     </>
   );
 }
