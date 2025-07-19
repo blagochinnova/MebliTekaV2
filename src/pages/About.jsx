@@ -1,17 +1,119 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 import ResumeModal from "../components/ResumeModal";
-import "../style/styles.css";
+import "../style/styles.css"; // Підключаємо CSS
+
+const TeamCard = ({ member }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const flipCard = () => {
+    setIsFlipped(!isFlipped);
+  };
+
+  const cardVariants = {
+    front: { rotateY: 0 },
+    back: { rotateY: 180 },
+    transition: { duration: 0.6, ease: "easeInOut" },
+  };
+
+  return (
+    <motion.div
+      className="team-card-wrapper"
+      initial={false}
+      animate={{ rotateY: isFlipped ? 180 : 0 }}
+      transition={cardVariants.transition}
+      style={{ perspective: "1000px" }}
+    >
+      <AnimatePresence>
+        {isFlipped ? (
+          <motion.div
+            key="back"
+            className="card-inner back-face"
+            initial={{ rotateY: 180 }}
+            animate={{ rotateY: 0 }}
+            exit={{ rotateY: 180 }}
+            transition={cardVariants.transition}
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="team-card back">
+              <div className="card-header">
+                <button className="flip-button" onClick={flipCard}>
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="card-content">
+                <p className="bio">{member.bio}</p>
+              </div>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="front"
+            className="card-inner front-face"
+            initial={{ rotateY: 0 }}
+            animate={{ rotateY: 0 }}
+            exit={{ rotateY: -180 }}
+            transition={cardVariants.transition}
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="team-card front">
+              <div className="card-header">
+                <button className="flip-button" onClick={flipCard}>
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="card-content">
+                <div className="avatar-container">
+                  <div className="member-avatar">
+                    <img src={`/images/${member.image}`} alt={member.name} />
+                  </div>
+                </div>
+                <h3 className="member-name">{member.name}</h3>
+                <p className="member-role">{member.role}</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
 
 export default function About() {
   const [isConsultationOpen, setConsultationOpen] = useState(false);
   const [isResumeOpen, setResumeOpen] = useState(false);
 
-  // Дані про працівників
+  // Дані про працівників з біографіями
   const teamMembers = [
-    { id: 1, name: "Іван Іванов", role: "Дизайнер", image: "worker1.jpg" },
-    { id: 2, name: "Марія Петрова", role: "Архітектор", image: "worker2.jpg" },
-    { id: 3, name: "Олег Сидоров", role: "Менеджер", image: "worker3.jpg" },
-    { id: 4, name: "Анна Коваль", role: "Консультант", image: "worker4.jpg" },
+    {
+      id: 1,
+      name: "Лі Хан",
+      role: "Збиральник меблів",
+      image: "worker1-removebg.png",
+      bio: "Ветеран із Південної Кореї. Втратив руку на війні, захищаючи свободу України. Сьогодні - частина нашої родини в MebliTeka, де з гідністю працює збирачем меблів.",
+    },
+    {
+      id: 2,
+      name: "Андрій Супрунов",
+      role: "Мебляр",
+      image: "worker2-removebg.png",
+      bio: "Майстер із понад 20-річним досвідом у меблевій сфері. Працював у провідних команіях України та США. Спеціалізується на кухнях, шафах-купе та меблях преміум-класу. Сьогодні - частина команди MebliTeka в Івано-Франківську.",
+    },
+    {
+      id: 3,
+      name: "В'ячеслав Соборний",
+      role: "Мебляр",
+      image: "worker3-removebg.png",
+      bio: "Проєктує корпусні меблі будь-якої складності. Підбирає матеріали та фурнітуру під ваші потреби.Забезпечує якісну збірку та монтаж. Створює стильні й довговічні рішення для вашого простору.",
+    },
+    {
+      id: 4,
+      name: "Олександр Міхов",
+      role: "Дизайнер та інноватор",
+      image: "worker4-removebg.png",
+      bio: "Колишній майор елітного підрозділу 'Омега'. Після поранення не зупинився - став частиною нашої команди як талановитий дизайнер та генератор інновацій.",
+    },
   ];
 
   return (
@@ -33,24 +135,17 @@ export default function About() {
           </section>
 
           <section className="team-section">
-            <h2>Наша команда</h2>
-            <p className="team-intro">
-              Знайомтесь з людьми, які щодня створюють для вас затишок та якісні
-              меблі:
-            </p>
-
-            <div className="team-list">
-              {teamMembers.map((member, i) => (
-                <div className="member" key={member.id}>
-                  <img
-                    src={`/images/${member.image}`} // Використовуємо унікальне зображення для кожного
-                    alt={`Фото працівника ${member.name}`}
-                  />
-                  <p className="team-text">
-                    {member.name} — {member.role}
-                  </p>
-                </div>
-              ))}
+            <div className="team-container">
+              <h2 className="team-title">Наша команда</h2>
+              <p className="team-subtitle">
+                Знайомтесь з людьми, які щодня створюють для вас затишок та
+                якісні меблі:
+              </p>
+              <div className="team-grid">
+                {teamMembers.map((member) => (
+                  <TeamCard key={member.id} member={member} />
+                ))}
+              </div>
             </div>
           </section>
 
