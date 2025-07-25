@@ -3,32 +3,28 @@
   font-weight: bold;
   margin-bottom: 15px;
   text-align: center;
-  padding: 10px 16px;
+  
 }
-.section-realized {
+/* .section-realized {
   padding: 40px 20px;
   max-width: 100%;
   margin: 0;
   position: relative;
-}
-.realized-slider {
-  width: 100vw;
-  height: 100vh;
+} */
+.section-realized .slide-wrapper {
   position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.realized-slider .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.slide-image {
+.section-realized .slide-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+  display: block;
+  border-radius: 8px;
 }
 .slide-caption {
   position: absolute;
@@ -64,15 +60,6 @@
   z-index: 10;
   width: 60px;
   height: 60px;
-}
-/*Оверлей для затмнення країв*/
-.realized-slider::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 }
 .kitchen-page {
   display: grid;

@@ -91,13 +91,13 @@ const catalogData = [
     title: "Реалізовані проєкти",
     images: [
       { src: "/realized1.jpeg" },
-      { src: "/realized2.jpeg" },
-      { src: "/realized3.jpeg" },
-      { src: "/realized4.jpeg" },
-      { src: "/realized5.jpeg" },
-      { src: "/realized6.jpeg" },
-      { src: "/realized7.jpeg" },
-      { src: "/realized8.jpeg" },
+      { src: "/realized2.jpg" },
+      { src: "/realized3.jpg" },
+      { src: "/realized4.jpg" },
+      { src: "/realized5.jpg" },
+      { src: "/realized6.jpg" },
+      { src: "/realized7.jpg" },
+      { src: "/realized8.jpg" },
       { src: "/realized9.jpeg" },
       { src: "/realized10.jpeg" },
       { src: "/realized11.jpeg" },
@@ -117,23 +117,23 @@ export default function Catalog() {
           modules={[Navigation, Pagination, EffectCoverflow, Autoplay]}
           navigation
           pagination={{ clickable: true }}
-          effect="coverFlow"
-          coverflowEffect={{
-            rotate: 30,
-            stretch: 0,
-            depth: 200,
-            modifier: 1,
-            slideShadows: true,
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
           }}
           spaceBetween={20}
-          slidesPerView={1}
-          centeredSlides
           loop
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1440: { slidesPerView: 4 },
+          }}
           className="realized-slider"
         >
           {realizedProjects.map((image, index) => (
             <SwiperSlide key={index}>
-              <div className="slide-content">
+              <div className="slide-wrapper">
                 <img
                   src={`/images/${image.src}`}
                   alt={image.label || `Проєкт ${index + 1}`}
