@@ -5,6 +5,75 @@
   text-align: center;
   padding: 10px 16px;
 }
+.section-realized {
+  padding: 40px 20px;
+  max-width: 100%;
+  margin: 0;
+  position: relative;
+}
+.realized-slider {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.realized-slider .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.slide-caption {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  color: white;
+  font-size: 1.8;
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 10;
+}
+.realized-slider .swiper-pagination {
+  bottom: 10px;
+  z-index: 10;
+}
+.realized-slider .swiper-pagination-bullet {
+  background: #d8d8d8 !important;
+  border: 0.5px solid #d8d8d8;
+  width: 12px;
+  height: 12px;
+}
+.realized-slider .swiper-pagination-bullet-active {
+  background: #0c3013;
+}
+.realized-slider .swiper-button-next,
+.realized-slider .swiper-button-prev {
+  color: #000;
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+}
+/*Оверлей для затмнення країв*/
+.realized-slider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 .kitchen-page {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -80,7 +149,7 @@
 .swiper-button-next {
   color: #000 !important;
   top: 50%;
-  transform:translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .swiper-button-prev {

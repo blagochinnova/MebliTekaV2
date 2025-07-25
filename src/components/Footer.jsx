@@ -6,7 +6,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <p>
-          <strong>Адреса:</strong> вул. Центральна, 12, Київ, Україна
+          <strong>Адреса:</strong> вул. Мочульського, 10, Івано-Франківськ,
+          Україна
         </p>
         <p>
           <strong>Телефон:</strong>{" "}

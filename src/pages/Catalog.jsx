@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import {
+  Autoplay,
+  EffectCoverflow,
+  Navigation,
+  Pagination,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../style/styles.css";
+import { image } from "framer-motion/client";
 
 const catalogData = [
   {
@@ -34,7 +40,7 @@ const catalogData = [
     title: "Вітальня",
     images: [
       { src: "/living1.jpg" },
-      { src: "/living2.jpg" }, 
+      { src: "/living2.jpg" },
       { src: "/living3.jpg" },
       { src: "/living4.jpg" },
       { src: "/living5.jpg" },
@@ -57,8 +63,8 @@ const catalogData = [
     images: [
       { src: "/wardrobe1.jpg" },
       { src: "/wardrobe2.jpg" },
-      { src: "/wardrobe3.jpg"},
-      { src: "/wardrobe4.jpg"},
+      { src: "/wardrobe3.jpg" },
+      { src: "/wardrobe4.jpg" },
       { src: "/wardrobe5.jpg" },
     ],
   },
@@ -67,8 +73,8 @@ const catalogData = [
     images: [
       { src: "/card1.jpg" },
       { src: "/card2.jpg" },
-      { src: "/card3.jpg"},
-      { src: "/card4.jpg"},
+      { src: "/card3.jpg" },
+      { src: "/card4.jpg" },
       { src: "/card5.jpg" },
     ],
   },
@@ -77,16 +83,71 @@ const catalogData = [
     images: [
       { src: "/modularwalls1.jpg" },
       { src: "/modularwalls2.jpg" },
-      { src: "/modularwalls3.jpg"},
-      { src: "/modularwalls4.jpg"},
+      { src: "/modularwalls3.jpg" },
+      { src: "/modularwalls4.jpg" },
+    ],
+  },
+  {
+    title: "Реалізовані проєкти",
+    images: [
+      { src: "/realized1.jpeg" },
+      { src: "/realized2.jpeg" },
+      { src: "/realized3.jpeg" },
+      { src: "/realized4.jpeg" },
+      { src: "/realized5.jpeg" },
+      { src: "/realized6.jpeg" },
+      { src: "/realized7.jpeg" },
+      { src: "/realized8.jpeg" },
+      { src: "/realized9.jpeg" },
+      { src: "/realized10.jpeg" },
+      { src: "/realized11.jpeg" },
     ],
   },
 ];
 
 export default function Catalog() {
+  const realizedProjects =
+    catalogData.find((cat) => cat.title === "Реалізовані проєкти")?.images ||
+    [];
   return (
     <main>
-      <h2 className="page-title">Рішення, які ми реалізуємо за вашим бажанням і макетом.</h2>
+      <div className="section-realized">
+        <h2 className="page-title realized-title">Наші реалізовані проєкти</h2>
+        <Swiper
+          modules={[Navigation, Pagination, EffectCoverflow, Autoplay]}
+          navigation
+          pagination={{ clickable: true }}
+          effect="coverFlow"
+          coverflowEffect={{
+            rotate: 30,
+            stretch: 0,
+            depth: 200,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          spaceBetween={20}
+          slidesPerView={1}
+          centeredSlides
+          loop
+          className="realized-slider"
+        >
+          {realizedProjects.map((image, index) => (
+            <SwiperSlide key={index}>
+              <div className="slide-content">
+                <img
+                  src={`/images/${image.src}`}
+                  alt={image.label || `Проєкт ${index + 1}`}
+                  className="slide-image"
+                />
+                {image.label && <p className="slide-caption">{image.label}</p>}
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      <h2 className="page-title">
+        Рішення, які ми реалізуємо за вашим бажанням і макетом.
+      </h2>
       <div className="container kitchen-page">
         {catalogData.map((category, index) => (
           <section key={index} className="catalog-section">
