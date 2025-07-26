@@ -1,19 +1,14 @@
-import React, { useState } from "react";
-import QuizModal from "./QuizModal";
+import React from "react";
 
 const FloatingQuizButton = () => {
-  const [open, setOpen] = useState(false);
+  const handleClick = () => {
+    window.open("https://mrqz.to/68847a42eb0b180033546e4e", "_blank");
+  };
 
   return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className="quiz-floating-btn"
-      >
-        🧩 Розрахувати меблі
-      </button>
-      {open && <QuizModal onClose={() => setOpen(false)} />}
-    </>
+    <button onClick={handleClick} className="quiz-floating-btn">
+      🧩 Розрахувати меблі
+    </button>
   );
 };
 
