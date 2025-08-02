@@ -9,7 +9,7 @@ const QuizModal = ({ onClose }) => {
           ✕
         </button>
         <iframe
-          src="https://mrqz.to/68847a42eb0b180033546e4e"
+          src="https://mrqz.link/68847a42eb0b180033546e4e"
           title="Marquiz"
           width="100%"
           height="600"
@@ -20,5 +20,4 @@ const QuizModal = ({ onClose }) => {
     </div>
   );
 };
-
 export default QuizModal;
