@@ -128,7 +128,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
               <p>
                 <strong>Адреса:</strong>
                 <br />
-                вул. Гарна, 21, Київ
+                вул. Мочульського, 10, Івано-Франківськ, Україна
               </p>
               <p>
                 <strong>Телефон:</strong>
